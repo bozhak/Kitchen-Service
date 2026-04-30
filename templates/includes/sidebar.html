@@ -1,0 +1,25 @@
+<ul class="sidebar-nav list-group">
+  {% if user.is_authenticated %}
+    <li class="list-group-item">
+      <div class="d-flex align-items-center">
+        User:
+        <a href="#" class="ml-2">#</a>
+        <form method="post"
+              action="#"
+              class="ml-auto">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary btn-sm">
+            Logout
+          </button>
+        </form>
+      </div>
+    </li>
+  {% else %}
+    <li class="list-group-item"><a href="#">Login</a></li>
+  {% endif %}
+  <br>
+  <li class="list-group-item"><a href="#">Profile</a></li>
+  <li class="list-group-item"><a href="{% url "kitchen:dish-list" %}">Dish</a></li>
+  <li class="list-group-item"><a href="{% url "kitchen:cook-list" %}">Cook</a></li>
+  <li class="list-group-item"><a href="#">Dish Types</a></li>
+</ul>
