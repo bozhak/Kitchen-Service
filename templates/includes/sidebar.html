@@ -3,9 +3,9 @@
     <li class="list-group-item">
       <div class="d-flex align-items-center">
         User:
-        <a href="#" class="ml-2">#</a>
+        <a href="#" class="ml-2">{{ user.username }}</a>
         <form method="post"
-              action="#"
+              action="{% url 'logout' %}"
               class="ml-auto">
           {% csrf_token %}
           <button type="submit" class="btn btn-primary btn-sm">
@@ -14,12 +14,10 @@
         </form>
       </div>
     </li>
-  {% else %}
-    <li class="list-group-item"><a href="#">Login</a></li>
-  {% endif %}
-  <br>
-  <li class="list-group-item"><a href="#">Profile</a></li>
+  <li class="list-group-item"><a href="{% url "kitchen:index" %}">Home</a></li>
   <li class="list-group-item"><a href="{% url "kitchen:dish-list" %}">Dish</a></li>
   <li class="list-group-item"><a href="{% url "kitchen:cook-list" %}">Cook</a></li>
-  <li class="list-group-item"><a href="#">Dish Types</a></li>
+  <li class="list-group-item"><a href="{% url "kitchen:dish-types" %}">Dish Types</a></li>
+  {% endif %}
+  <br>
 </ul>
