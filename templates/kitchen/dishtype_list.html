@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Dish Types
+    <a style="float: right" href="{% url 'kitchen:dish_type-create' %}" class="btn btn-primary link-to-page">+</a>
+  </h1>
+  <form method="get" action="" class="form-inline">
+    {{ search_form }}
+    <input class="btn btn-secondary" type="submit" value="🔎">
+  </form>
+  {#  <form method="get" action="" class="form-inline">#}
+  {#    {{ search_form }}#}
+  {#    <input class="btn btn-secondary" type="submit" value="🔎">#}
+  {#  </form>#}
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+    </tr>
+    {% for dish_type in dishtype_list %}
+      <tr>
+        <td><a href="{% url 'kitchen:dish_type-detail' pk=dish_type.id %}">{{ dish_type.id }}</a></td>
+        <td>{{ dish_type.name }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}
